@@ -1,0 +1,166 @@
+---CREATE MENU
+
+curl -X POST -H "Content-Type: application/json"  -d'{ "menu_id": "1",
+        "store_name": "Dominoes",
+        "selection": [
+            "Cheese",
+            "Pepperoni"
+        ],
+        "size": [
+            "Slide", "Small", "Medium", "Large", "X-Large"
+        ],
+        "sequence": [
+            "selection",
+            "size"
+        ],
+        "price": [
+            "3.50", "7.00", "10.00", "15.00", "20.00"
+        ],
+        "store_hours": {
+            "Mon": "10am-10pm",
+            "Tue": "10am-10pm",
+            "Wed": "10am-10pm",
+            "Thu": "10am-10pm",
+            "Fri": "10am-10pm",
+            "Sat": "11am-12pm",
+            "Sun": "11am-12pm"
+        }
+        }' https://i3fs9f5qe9.execute-api.us-west-1.amazonaws.com/prod/menu
+
+
+  output :
+  "OK"Rashmis-MacBook-Pro:pizza-shop-menu rashmisharma$
+
+
+  PUT MENU API:
+
+  curl -X PUT -H "Content-Type: application/json"  -d'{
+      "menu_id": "1",
+      "selection": [
+          "Cheese",
+          "Pepperoni",
+          "Vegetable"
+  ]}' https://i3fs9f5qe9.execute-api.us-west-1.amazonaws.com/prod/menu/1
+
+  Response:
+  "OK"Rashmis-MacBook-Pro:pizza-shop-menu rashmisharma$
+
+
+
+  GET MENU-API:
+  curl -X GET -H "Content-Type: application/json"  https://i3fs9f5qe9.execute-api.us-west-1.amazonaws.com/prod/menu/1
+
+
+ OUTPUT:
+ {
+  "menu_id": "1",
+  "selection": [
+    "Cheese",
+    "Pepperoni",
+    "Vegetable"
+  ],
+  "sequence": [
+    "selection",
+    "size"
+  ],
+  "price": [
+    "3.50",
+    "7.00",
+    "10.00",
+    "15.00",
+    "20.00"
+  ],
+  "store_hours": {
+    "Wed": "10am-10pm",
+    "Sun": "11am-12pm",
+    "Fri": "10am-10pm",
+    "Tue": "10am-10pm",
+    "Mon": "10am-10pm",
+    "Thu": "10am-10pm",
+    "Sat": "11am-12pm"
+  },
+  "store_name": "Dominoes",
+  "size": [
+    "Slide",
+    "Small",
+    "Medium",
+    "Large",
+    "X-Large"
+  ]
+}
+
+
+DELETE MENU-API
+
+curl -X DELETE -H "Content-Type: application/json"  https://i3fs9f5qe9.execute-api.us-west-1.amazonaws.com/prod/menu/1
+
+OUTPUT:
+"OK"
+
+-------------------------------------------------------------------------
+
+ORDER:
+
+1) CREATE ORDER
+
+
+
+curl -X POST -H "Content-Type: application/json"  -d'{   "menu_id": "1",
+  "order_id": "1",
+  "customer_name": "Rashmi Sharma",
+  "customer_email": "foobar@gmail.com"
+    }' https://i3fs9f5qe9.execute-api.us-west-1.amazonaws.com/prod/order
+
+
+OUTPUT:
+"Hi Rashmi Sharma, please choose one of these selection:  1)Cheese, 2)Pepperoni, 3)Vegetable"
+
+
+2) PUT ORDER:
+
+
+
+curl -X PUT -H "Content-Type: application/json"  -d'{
+"input": "1"
+    }' https://i3fs9f5qe9.execute-api.us-west-1.amazonaws.com/prod/order/1
+
+
+  OUTPUT:
+  "Which size do you want?  1)Slide, 2)Small, 3)Medium, 4)Large, 5)X-Large"
+3) PUT ORDER AGAIN:
+
+curl -X PUT -H "Content-Type: application/json"  -d'{
+"input": "4"
+    }' https://i3fs9f5qe9.execute-api.us-west-1.amazonaws.com/prod/order/1
+
+OUTPUT:
+"Your order costs $15.00. We will email you when the order is ready. Thank you!"
+
+
+4) GET API:
+
+curl -X GET -H "Content-Type: application/json"  https://i3fs9f5qe9.execute-api.us-west-1.amazonaws.com/prod/order/1
+
+OUTPUT:
+
+{
+  "menu_id": "1",
+  "customer_email": "foobar@gmail.com",
+  "order_id": "1",
+  "order_status": "Processing",
+  "orders": {
+    "selection": "Cheese",
+    "costs": "$15.00",
+    "order_time": "05-12-17@20:31:22",
+    "size": "Large"
+  },
+  "customer_name": "Rashmi Sharma"
+}
+
+5) DELETE API:
+
+curl -X DELETE -H "Content-Type: application/json"  https://i3fs9f5qe9.execute-api.us-west-1.amazonaws.com/prod/order/1
+
+
+OUTPUT:
+"OK"
