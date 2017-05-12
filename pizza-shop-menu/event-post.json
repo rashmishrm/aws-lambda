@@ -1,7 +1,8 @@
 {
   "operation": "POST",
   "payload": {
-    {
+      "Item":{
+
         "menu_id": "3",
         "store_name": "Dominoes",
         "selection": [

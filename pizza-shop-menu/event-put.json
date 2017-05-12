@@ -1,12 +1,12 @@
 {
   "operation": "PUT",
   "payload": {
-
+  "Item":{
     "menu_id": "1",
     "selection": [
         "Cheese",
         "Pepperoni",
         "Vegetable"
-]
+]}
   }
 }
