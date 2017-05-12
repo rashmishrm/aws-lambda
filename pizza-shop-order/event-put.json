@@ -1,7 +1,9 @@
 {
   "operation": "PUT",
   "payload": {
-      "input": "3"
+      "Item":{
+    "input": "3"
+      }
   },
-  "order_id":"1"
+  "order_id": "1"
 }
