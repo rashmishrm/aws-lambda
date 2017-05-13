@@ -113,9 +113,9 @@ curl -X POST -H "Content-Type: application/json"  -d'{   "menu_id": "1",
 
 
 OUTPUT:
-"Hi Rashmi Sharma, please choose one of these selection:  1)Cheese, 2)Pepperoni, 3)Vegetable"
-
-
+{
+    "Message":"Hi Rashmi Sharma, please choose one of these selection:  1)Cheese, 2)Pepperoni, 3)Vegetable"
+}
 2) PUT ORDER:
 
 
@@ -126,7 +126,9 @@ curl -X PUT -H "Content-Type: application/json"  -d'{
 
 
   OUTPUT:
-  "Which size do you want?  1)Slide, 2)Small, 3)Medium, 4)Large, 5)X-Large"
+  {
+      "Message":"Which size do you want?  1)Slide, 2)Small, 3)Medium, 4)Large, 5)X-Large"
+  }
 3) PUT ORDER AGAIN:
 
 curl -X PUT -H "Content-Type: application/json"  -d'{
@@ -134,7 +136,10 @@ curl -X PUT -H "Content-Type: application/json"  -d'{
     }' https://i3fs9f5qe9.execute-api.us-west-1.amazonaws.com/prod/order/1
 
 OUTPUT:
+{
+    "Message":
 "Your order costs $15.00. We will email you when the order is ready. Thank you!"
+}
 
 
 4) GET API:
